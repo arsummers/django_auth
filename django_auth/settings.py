@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     #third-party
     'rest_framework',
-    'core.apps.CoreConfig',
+    'items.apps.ItemsConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,5 +124,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
